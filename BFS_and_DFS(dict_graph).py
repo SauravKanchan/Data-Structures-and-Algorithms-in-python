@@ -5,14 +5,6 @@
 ref: http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
 
 """
-graph = {'A': set(['B', 'C']),
-         'B': set(['A', 'D', 'E']),
-         'C': set(['A', 'F']),
-         'D': set(['B']),
-         'E': set(['B', 'F']),
-         'F': set(['C', 'E'])}
-
-
 def dfs(graph, start, visited=None):
     if visited is None:
         visited = set()
@@ -21,7 +13,6 @@ def dfs(graph, start, visited=None):
         dfs(graph, next, visited)
     return visited
 
-print(dfs(graph, 'C')) # {'E', 'D', 'F', 'A', 'C', 'B'}
 
 def dfs_paths(graph, start, goal):
     stack = [(start, [start])]
@@ -33,9 +24,6 @@ def dfs_paths(graph, start, goal):
             else:
                 stack.append((next, path + [next]))
 
-print(list(dfs_paths(graph, 'A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
-
-
 def bfs(graph, start):
     visited, queue = set(), [start]
     while queue:
@@ -45,7 +33,6 @@ def bfs(graph, start):
             queue.extend(graph[vertex] - visited)
     return visited
 
-print(bfs(graph, 'A')) # {'B', 'C', 'A', 'F', 'D', 'E'}
 
 def bfs_paths(graph, start, goal):
     queue = [(start, [start])]
@@ -57,7 +44,6 @@ def bfs_paths(graph, start, goal):
             else:
                 queue.append((next, path + [next]))
 
-print(list(bfs_paths(graph, 'A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 
 def shortest_path(graph, start, goal):
     try:
@@ -65,4 +51,20 @@ def shortest_path(graph, start, goal):
     except StopIteration:
         return None
 
-print(shortest_path(graph, 'A', 'F')) # ['A', 'C', 'F']
+if __name__ == "__main__":
+    graph = {'A': set(['B', 'C']),
+             'B': set(['A', 'D', 'E']),
+             'C': set(['A', 'F']),
+             'D': set(['B']),
+             'E': set(['B', 'F']),
+             'F': set(['C', 'E'])}
+
+    print(dfs(graph, 'C')) # {'E', 'D', 'F', 'A', 'C', 'B'}
+
+    print(shortest_path(graph, 'A', 'F'))  # ['A', 'C', 'F']
+
+    print(list(dfs_paths(graph, 'A', 'F')))  # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+
+    print(list(bfs_paths(graph, 'A', 'F')))  # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+
+    print(bfs(graph, 'A'))  # {'B', 'C', 'A', 'F', 'D', 'E'}
