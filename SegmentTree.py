@@ -4,7 +4,6 @@
 @author: Saurav Kanchan
 
 """
-#encoding:utf-8
 class SegmentTree(object):
     def __init__(self, start, end):
         self.start = start
