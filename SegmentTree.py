@@ -108,3 +108,5 @@ if __name__ == "__main__":
     print(segtree.query_max(0,8))
     print(segtree.query_len(0, 8))
     print(segtree.query_sum(0, 8))
+
+
