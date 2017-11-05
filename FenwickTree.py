@@ -60,7 +60,7 @@ def construct(arr, n):
     return BITTree
 
 
-# Driver code to test above methods
+
 freq = [2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9]
 BITTree = construct(freq, len(freq))
 print("Sum of elements in arr[0..5] is " + str(getsum(BITTree, 5)))
