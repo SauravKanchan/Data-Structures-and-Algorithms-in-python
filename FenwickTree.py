@@ -60,10 +60,10 @@ def construct(arr, n):
     return BITTree
 
 
-
-freq = [2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9]
-BITTree = construct(freq, len(freq))
-print("Sum of elements in arr[0..5] is " + str(getsum(BITTree, 5)))
-freq[3] += 6
-updatebit(BITTree, len(freq), 3, 6)
-print("Sum of elements in arr[0..5] is " + str(getsum(BITTree, 5)))
+if __name__ == "__main__":
+    freq = [2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9]
+    BITTree = construct(freq, len(freq))
+    print("Sum of elements in arr[0..5] is " + str(getsum(BITTree, 5)))
+    freq[3] += 6
+    updatebit(BITTree, len(freq), 3, 6)
+    print("Sum of elements in arr[0..5] is " + str(getsum(BITTree, 5)))
