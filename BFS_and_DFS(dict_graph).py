@@ -21,7 +21,7 @@ def dfs(graph, start, visited=None):
         dfs(graph, next, visited)
     return visited
 
-dfs(graph, 'C') # {'E', 'D', 'F', 'A', 'C', 'B'}
+print(dfs(graph, 'C')) # {'E', 'D', 'F', 'A', 'C', 'B'}
 
 def dfs_paths(graph, start, goal):
     stack = [(start, [start])]
@@ -33,7 +33,7 @@ def dfs_paths(graph, start, goal):
             else:
                 stack.append((next, path + [next]))
 
-list(dfs_paths(graph, 'A', 'F')) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+print(list(dfs_paths(graph, 'A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 
 
 def bfs(graph, start):
@@ -45,7 +45,7 @@ def bfs(graph, start):
             queue.extend(graph[vertex] - visited)
     return visited
 
-bfs(graph, 'A') # {'B', 'C', 'A', 'F', 'D', 'E'}
+print(bfs(graph, 'A')) # {'B', 'C', 'A', 'F', 'D', 'E'}
 
 def bfs_paths(graph, start, goal):
     queue = [(start, [start])]
@@ -57,7 +57,7 @@ def bfs_paths(graph, start, goal):
             else:
                 queue.append((next, path + [next]))
 
-list(bfs_paths(graph, 'A', 'F')) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
+print(list(bfs_paths(graph, 'A', 'F'))) # [['A', 'C', 'F'], ['A', 'B', 'E', 'F']]
 
 def shortest_path(graph, start, goal):
     try:
@@ -65,4 +65,4 @@ def shortest_path(graph, start, goal):
     except StopIteration:
         return None
 
-shortest_path(graph, 'A', 'F') # ['A', 'C', 'F']
+print(shortest_path(graph, 'A', 'F')) # ['A', 'C', 'F']
